@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bill Report</h1>
+  <p>Bill Number: {{bill_number}}</p>
+  <p>Date: {{create_at}}</p>
+
+  <h2>Customer Details</h2>
+  <p>Name: {{first_name}} {{last_name}}</p>
+  <p>Mobile: {{mobile}}</p>
+  <p>Address: {{address}}</p>
+
+  <h2>Work Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Work Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each works}} <!-- Loop through the works array -->
+        <tr>
+          <td>{{work_name}}</td>
+          <td>{{price}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</body>
+</html>
