@@ -9,7 +9,28 @@ import { AuthService } from './auth.service';
 export class AdminLocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
     console.log('local strategy');
-    
+
+    super({ usernameField: 'email' });
+  }
+
+  async validate(email: string, password: string): Promise<any> {
+    console.log('local strategy', email, password);
+
+    const admin = await this.authService.validateAdmin(email, password);
+
+    if (!admin) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    return admin;
+  }
+}
+
+
+@Injectable()
+export class CustomerLocalStrategy extends PassportStrategy(Strategy) {
+  constructor(private authService: AuthService) {
+    console.log('local strategy');
+
     super({ usernameField: 'email' });
   }
 

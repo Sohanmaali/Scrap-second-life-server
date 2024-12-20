@@ -49,6 +49,7 @@ import { ConfigModule } from '@nestjs/config';
 import { FileModule } from './cms/files/file.module';
 // import { AokModule } from './modules/aok/aok.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
+import { SettingModule } from './modules/setting/setting.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
     FileModule,
     // AokModule,
     AuthenticationModule,
+    SettingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
